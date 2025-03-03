@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Commerce Homepage</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>ShopEase</h1>
+    <input type="text" id="search" placeholder="Search products...">
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Shop</a>
+      <a href="#">Cart</a>
+      <a href="#">Login</a>
+    </nav>
+  </header>
+  
+  <!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+      <h2>Biggest Sale of the Year!</h2>
+      <p>Get up to 50% off on all products. Limited time only!</p>
+      <button>Shop Now</button>
+    </div>
+    <img src="Assets/banner-1.jpg" alt="Hero Banner" class="hero-img">
+  </section>
+  
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <h3>Top Categories</h3>
+        <div class="category-grid">
+          <div class="category-item" onclick="filterCategory('Electronics')">
+            <i class="fas fa-tv"></i>
+            <p>Electronics</p>
+          </div>
+          <div class="category-item" onclick="filterCategory('Clothing')">
+            <i class="fas fa-tshirt"></i>
+            <p>Clothing</p>
+          </div>
+          <div class="category-item" onclick="filterCategory('Home Appliances')">
+            <i class="fas fa-blender"></i>
+            <p>Home Appliances</p>
+          </div>
+          <div class="category-item" onclick="filterCategory('Footwear')">
+            <i class="fas fa-shoe-prints"></i>
+            <p>Footwear</p>
+          </div>
+          <div class="category-item" onclick="filterCategory('Accessories')">
+            <i class="fas fa-shopping-bag"></i>
+            <p>Accessories</p>
+          </div>
+          <div class="category-item" onclick="filterCategory('Beauty & Personal Care')">
+            <i class="fas fa-spray-can"></i>
+            <p>Beauty & Personal Care</p>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Featured Products Section -->
+      <section class="products-section">
+        <h3>Featured Products</h3>
+        <div class="product-grid" id="products">
+            
+          <!-- Products will be injected here by JavaScript -->
+        </div>
+      </section>
+      
+      <!-- Footer -->
+      <footer>
+        <div class="footer-container">
+          <!-- Footer Section 1: Logo and Social -->
+          <div class="footer-section">
+            <h4>ShopEase</h4>
+            <p>Your trusted online shopping destination offering quality products at competitive prices.</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+      
+          <!-- Footer Section 2: Quick Links -->
+          <div class="footer-section">
+            <h5>Quick Links</h5>
+            <ul class="footer-links">
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">Shipping Policy</a></li>
+              <li><a href="#">Return Policy</a></li>
+            </ul>
+          </div>
+      
+          <!-- Footer Customer Service -->
+          <div class="footer-section">
+            <h5>Customer Service</h5>
+            <ul class="footer-links">
+              <li><a href="#">Help Center</a></li>
+            </ul>
+          </div>
+      
+          <!-- Footer Section 4: Newsletter -->
+          <div class="footer-section">
+            <h5>Newsletter</h5>
+            <p>Subscribe to get updates & offers</p>
+            <form class="newsletter-form">
+              <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+              <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      
+        
+      </footer>
+      
+      
+      <script>
+        // Define 16 sample products
+        const products = [
+          { name: "Smartphone", price: "₹25,999", category: "Electronics", image: "Assets/p.webp" },
+          { name: "Jeans", price: "₹1,999", category: "Clothing", image: "Assets/jeans.webp" },
+          { name: "Leather Shoes", price: "₹3,499", category: "Footwear", image: "Assets/shoes.jpg" },
+          { name: "Bracelet", price: "₹1,299", category: "Accessories", image: "Assets/bracelate.jpg" },
+          { name: "Serum", price: "₹1,299", category: "Beauty & Personal Care", image: "Assets/serum.jpg" },
+          { name: "Laptop", price: "₹55,999", category: "Electronics", image: "Assets/laptop.jpg" },
+          { name: "T-Shirt", price: "₹999", category: "Clothing", image: "Assets/tshirt.webp" },
+          { name: "Washing Machine", price: "₹15,499", category: "Home Appliances", image: "Assets/washing.jpg" },
+          { name: "Sandal", price: "₹3,499", category: "Footwear", image: "Assets/sandal.jpg" },
+          { name: "Belt", price: "₹2,999", category: "Accessories", image: "Assets/belt.jpg" },
+          { name: "Lipstick", price: "₹1,299", category: "Beauty & Personal Care", image: "Assets/lip.jpg" },
+          { name: "Headphones", price: "₹1,599", category: "Electronics", image: "Assets/headphone.jpg" },
+          { name: "Toaster", price: "₹8,499", category: "Home Appliances", image: "Assets/toaster.jpg" },
+          { name: "Heels", price: "₹3,499", category: "Footwear", image: "Assets/heels.jpg" },
+          { name: "Tablet", price: "₹18,999", category: "Electronics", image: "Assets/tablet.jpg" },
+          { name: "Earrings", price: "₹1,299", category: "Accessories", image: "Assets/earrings.jpg" },
+          { name: "Slipper", price: "₹3,499", category: "Footwear", image: "Assets/dlipper.jpg" },
+          { name: "Mascara", price: "₹1,299", category: "Beauty & Personal Care", image: "Assets/mascara.jpg" },
+          { name: "Smart Watch", price: "₹7,999", category: "Electronics", image: "Assets/watch.jpg" },
+          { name: "Jacket", price: "₹1,999", category: "Clothing", image: "Assets/jacket.jpg" },
+          { name: "Vaccum Cleaner", price: "₹8,499", category: "Home Appliances", image: "Assets/vaccum.jpg" },
+          { name: "Sneakers", price: "₹3,499", category: "Footwear", image: "Assets/sneakers.jpg" },
+          { name: "Moisturizer", price: "₹1,299", category: "Beauty & Personal Care", image: "Assets/moi.jpg" },
+          { name: "Saree", price: "₹2,999", category: "Clothing", image: "Assets/saree.jpg" },
+          { name: "Refrigerator", price: "₹8,499", category: "Home Appliances", image: "Assets/fridge.jpg" },
+          { name: "Flip-Flop", price: "₹3,499", category: "Footwear", image: "Assets/flip.jpg" },
+          { name: "Sunglasses", price: "₹1,299", category: "Accessories", image: "Assets/sun.jpg" },
+          { name: "Purse", price: "₹1,299", category: "Accessories", image: "Assets/bag.jpg" },
+
+        ];
+        
+        function displayProducts(filteredProducts) {
+          const productContainer = document.getElementById("products");
+          productContainer.innerHTML = "";
+          filteredProducts.forEach(product => {
+            productContainer.innerHTML += `
+              <div class="product-item">
+                <img src="${product.image}" alt="${product.name}" class="product-img">
+                <h4>${product.name}</h4>
+                <p>${product.price}</p>
+              </div>
+            `;
+          });
+        }
+        
+        function filterCategory(category) {
+          const filtered = products.filter(product => product.category === category);
+          displayProducts(filtered);
+        }
+        
+        document.getElementById("search").addEventListener("input", function () {
+          const searchValue = this.value.toLowerCase();
+          const filtered = products.filter(product => product.name.toLowerCase().includes(searchValue));
+          displayProducts(filtered);
+        });
+        
+        // Display all products by default (all 16 products)
+        displayProducts(products);
+      </script>
+    </body>
+    </html>
+    
